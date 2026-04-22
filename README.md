@@ -4,7 +4,7 @@
 
 ## Screenshots
 
-### Demo
+### Demo Media Browser
 ![Demo](images/demo.gif)
 
 ### Node Overview
