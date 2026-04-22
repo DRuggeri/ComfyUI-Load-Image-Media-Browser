@@ -4,6 +4,8 @@
 
 ![Demo](images/demo.gif)
 
+![Demo](images/Nodes_1)
+
 ## Features
 
 It adds a media browser to the native **Load Image** and **Load Video** nodes in ComfyUI, making it easier to browse, preview, sort, and select files from the `input` directory.
