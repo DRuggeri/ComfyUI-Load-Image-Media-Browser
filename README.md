@@ -2,9 +2,13 @@
 
 **ComfyUI Load Image Media Browser** is an independently published derivative project based on `audioscavenger/ComfyUI-Thumbnails`.
 
+## Screenshots
+
+### Demo
 ![Demo](images/demo.gif)
 
-![Demo](images/Nodes_1)
+### Node Overview
+![Nodes](images/Nodes_1.jpg)
 
 ## Features
 
