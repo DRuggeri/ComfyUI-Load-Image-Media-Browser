@@ -83,6 +83,13 @@ Replace the old folder, restart ComfyUI, and hard refresh the web UI.
 - images are previewed in the browser UI and can be selected through **Load Image**
 - this extension works inside the ComfyUI `input` directory structure
 - file deletion is limited to files inside the allowed input tree
+  
+## Thumbnail behavior
+
+- thumbnails are not stored as separate files
+- previews are generated directly from the original media in the ComfyUI `input` directory
+- this node does not create a persistent thumbnail cache
+- closing ComfyUI does not remove any thumbnail files created by this node, because none are created
 
 ## Release
 
