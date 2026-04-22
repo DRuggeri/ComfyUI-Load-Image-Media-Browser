@@ -2,6 +2,10 @@
 
 **ComfyUI Load Image Media Browser** is an independently published derivative project based on `audioscavenger/ComfyUI-Thumbnails`.
 
+![Demo](images/demo.gif)
+
+## Features
+
 It adds a media browser to the native **Load Image** and **Load Video** nodes in ComfyUI, making it easier to browse, preview, sort, and select files from the `input` directory.
 
 ## Features
