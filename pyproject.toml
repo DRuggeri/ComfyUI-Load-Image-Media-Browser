@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-load-image-media-browser"
+version = "1.0.0"
+description = "Load Image Media Browser for ComfyUI"
+license = {text = "AGPL-3.0-or-later"}
+requires-python = ">=3.10"
+readme = "README.md"
+
+[tool.comfy]
+PublisherId = "puk77"
+DisplayName = "ComfyUI Load Image Media Browser"
+
+[project.urls]
+Repository = "https://github.com/puk77/ComfyUI-Load-Image-Media-Browser"
+Issues = "https://github.com/puk77/ComfyUI-Load-Image-Media-Browser/issues"
