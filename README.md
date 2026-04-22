@@ -59,10 +59,13 @@ This extension enhances the native ComfyUI file-loading workflow.
 
 ## Installation
 
-Copy or clone this repository into:
+### Manual Download
 
-```text
-ComfyUI/custom_nodes/ComfyUI-Load-Image-Media-Browser
+1. Open a terminal inside your `custom_nodes` folder in your ComfyUI installation.
+2. Clone this repository into `ComfyUI/custom_nodes/`:
+
+```bash
+git clone https://github.com/puk77/ComfyUI-Load-Image-Media-Browser.git
 ```
 
 Then:
