@@ -10,6 +10,7 @@ const SETTINGS = {
   deleteEnabled: "Load Image Media Browser.Enable Delete",
   fit: "Load Image Media Browser.Preview Fit",
   previewHeight: "Load Image Media Browser.Preview Height",
+  autoResizeNode: "Load Image Media Browser.Auto Resize Node To Media",
   autoplayVideos: "Load Image Media Browser.Autoplay Video Previews",
   sortMode: "Load Image Media Browser.Sort Mode",
 };
@@ -295,6 +296,11 @@ function resizeNodeForAspect(node, width, height) {
 
 async function fitNodePreviewToMedia(node, relpath, explicitType = null) {
   if (!node || !relpath) return;
+  const autoResizeNode = getSettingValue(SETTINGS.autoResizeNode, true);
+  if (!autoResizeNode) {
+    node.setDirtyCanvas?.(true, true);
+    return;
+  }
   const mediaType = explicitType || inferMediaTypeFromPath(relpath);
   const url = mediaUrl(relpath);
   try {
@@ -571,6 +577,7 @@ app.registerExtension({
     { id: SETTINGS.previewHeight, name: "Preview height", type: "slider", defaultValue: 160, attrs: { min: 96, max: 360, step: 8 } },
     { id: SETTINGS.columns, name: "Grid columns", type: "slider", defaultValue: 4, attrs: { min: 2, max: 8, step: 1 } },
     { id: SETTINGS.fit, name: "Preview fit", type: "combo", options: ["contain", "cover"], defaultValue: "contain" },
+    { id: SETTINGS.autoResizeNode, name: "Auto resize node to media", type: "boolean", defaultValue: true },
     { id: SETTINGS.autoplayVideos, name: "Autoplay video previews", type: "boolean", defaultValue: true },
     { id: SETTINGS.deleteEnabled, name: "Enable delete button", type: "boolean", defaultValue: true },
     { id: SETTINGS.sortMode, name: "Sort mode", type: "combo", options: ["date_desc", "date_asc", "name_asc", "name_desc"], defaultValue: "date_desc" },
