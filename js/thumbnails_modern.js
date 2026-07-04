@@ -11,6 +11,7 @@ const SETTINGS = {
   fit: "Load Image Media Browser.Preview Fit",
   previewHeight: "Load Image Media Browser.Preview Height",
   autoResizeNode: "Load Image Media Browser.Auto Resize Node To Media",
+  autoRefreshFolder: "Load Image Media Browser.Auto Refresh Folder",
   autoplayVideos: "Load Image Media Browser.Autoplay Video Previews",
   sortMode: "Load Image Media Browser.Sort Mode",
 };
@@ -496,6 +497,10 @@ function renderGrid() {
 }
 
 async function openDialog(node, refresh = false) {
+  // Check global setting: Auto Refresh Folder
+  if (refresh === false) {
+    refresh = getSettingValue(SETTINGS.autoRefreshFolder, false);
+  }
   ensureDialog();
   currentNode = node;
   currentData = await fetchListing(refresh);
@@ -578,6 +583,7 @@ app.registerExtension({
     { id: SETTINGS.columns, name: "Grid columns", type: "slider", defaultValue: 4, attrs: { min: 2, max: 8, step: 1 } },
     { id: SETTINGS.fit, name: "Preview fit", type: "combo", options: ["contain", "cover"], defaultValue: "contain" },
     { id: SETTINGS.autoResizeNode, name: "Auto resize node to media", type: "boolean", defaultValue: true },
+    { id: SETTINGS.autoRefreshFolder, name: "Auto refresh folder", type: "boolean", defaultValue: false },
     { id: SETTINGS.autoplayVideos, name: "Autoplay video previews", type: "boolean", defaultValue: true },
     { id: SETTINGS.deleteEnabled, name: "Enable delete button", type: "boolean", defaultValue: true },
     { id: SETTINGS.sortMode, name: "Sort mode", type: "combo", options: ["date_desc", "date_asc", "name_asc", "name_desc"], defaultValue: "date_desc" },
