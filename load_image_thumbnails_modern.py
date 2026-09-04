@@ -126,7 +126,7 @@ def _pillow_open(fn, arg):
             ImageFile.LOAD_TRUNCATED_IMAGES = previous
 
 
-def _load_image_tensor(image_path: Path) -> Tuple[torch.Tensor, torch.Tensor]:
+def _load_image_tensor(image_path: Path) -> Tuple[torch.Tensor, torch.Tensor, str]:
     img = _pillow_open(Image.open, image_path)
     output_images = []
     output_masks = []
@@ -155,14 +155,16 @@ def _load_image_tensor(image_path: Path) -> Tuple[torch.Tensor, torch.Tensor]:
         output_images.append(image_t)
         output_masks.append(mask_t.unsqueeze(0))
 
+    image_path_str = image_path.as_posix()
     if len(output_images) > 1 and getattr(img, "format", None) not in EXCLUDED_ANIMATED_CONCAT_FORMATS:
-        return torch.cat(output_images, dim=0), torch.cat(output_masks, dim=0)
-    return output_images[0], output_masks[0]
+        return torch.cat(output_images, dim=0), torch.cat(output_masks, dim=0), image_path_str
+    return output_images[0], output_masks[0], image_path_str
 
 
 class LoadImageMediaBrowser:
     CATEGORY = "image"
-    RETURN_TYPES = ("IMAGE", "MASK")
+    RETURN_TYPES = ("IMAGE", "MASK", "STRING")
+    RETURN_NAMES = ("IMAGE", "MASK", "image_path")
     FUNCTION = "load_image"
     DESCRIPTION = "Load image with the Load Image Media Browser for ComfyUI input files."
 
